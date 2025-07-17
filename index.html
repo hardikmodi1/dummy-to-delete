@@ -1,11 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script>
+      window.sprChatSettings = {
+        appId: "687948e69f42101fd6f9fa67_app_66128631",
+        skin: "MODERN",
+      };
+      !(function () {
+        var a,
+          r,
+          n,
+          o,
+          i,
+          s = window,
+          e = s.sprChat;
+        (e && e.loaded) ||
+          ((a = document),
+          ((r = function () {
+            r.q.push(arguments);
+          }).q = []),
+          (s.sprChat = r),
+          (s.sprChat.loaded = !0),
+          (n = 0),
+          (o = "spr-live-chat-widget"),
+          (i = function () {
+            var e = a.getElementById(o),
+              e = (e && e.parentNode.removeChild(e), a.createElement("script")),
+              t =
+                ((e.type = "text/javascript"),
+                (e.async = !0),
+                (e.src =
+                  "https://qa6-live-chat.sprinklr.com/api/livechat/handshake/widget/" +
+                  s.sprChatSettings.appId),
+                (e.id = o),
+                (e.onerror = function (e) {
+                  var t, a;
+                  ++n <= 3
+                    ? setTimeout(i, 250)
+                    : ((s.sprChat.loaded = !1),
+                      (t = "WIDGET_LOAD_FAILED"),
+                      (a = e),
+                      r.q
+                        .map(function (e) {
+                          if (
+                            "subscribeToUpdate" === e[0] &&
+                            e[1] &&
+                            "loadCompleted" === e[1].topic
+                          )
+                            return e[1].subscriber;
+                        })
+                        .map(function (e) {
+                          e &&
+                            e({
+                              response: {
+                                error: !0,
+                                errorPayload: { type: t, message: a },
+                              },
+                            });
+                        }));
+                }),
+                a.getElementsByTagName("script")[0]);
+            t.parentNode.insertBefore(e, t);
+          }),
+          "loading" !== a.readyState
+            ? i()
+            : a.addEventListener("DOMContentLoaded", i));
+      })();
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
   <body>
     Hello World
+    <iframe
+      src="https://forms-qa6.sprinklr.com/guided-workflows/6878edbc4fb9677ecf60d15e?gwId=800923"
+      height="550px"
+      width="500px"
+    />
   </body>
 </html>
